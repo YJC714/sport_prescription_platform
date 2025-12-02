@@ -216,16 +216,18 @@ elif st.session_state.page == "點數兌換":
     money_saved_twd = total_redeemed_points // CONVERSION_RATE_POINTS_PER_TWD
     st.header("點數兌換")
     # 更改為兩欄位的 metric 呈現
-    col_m1, col_m2 = st.columns(2)
+    col_m1, col_m2, col_m3 = st.columns(2)
 
     with col_m1:
         st.metric("目前可用點數", f"{available_points():,} 點")
     with col_m2:
         st.metric(
-            "累積節省金額 (預估)", 
-            f"TWD {money_saved_twd:,} 元", 
+            "累積節省金額", 
+            f" {money_saved_twd:,} 元", 
             f"已折抵 {total_redeemed_points:,} 點"
         )
+    with col_m3:
+        st.metric("預估已節省未來醫療支出", 2000元)
     
 
     st.success("店家直接掃描下方條碼，系統會自動辨識店家並折抵！")
@@ -339,6 +341,7 @@ elif st.session_state.page == "活動推廣":
 #elif st.session_state.page == "報名紀錄":
 
 #    st.header("報名紀錄")
+
 
 
 
