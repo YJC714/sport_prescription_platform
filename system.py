@@ -168,7 +168,7 @@ if st.session_state.page == "運動紀錄":
         (df['日期'].dt.month == today.month)
     ]
     current_month_total_mins = current_month_records['分鐘數'].sum()
-    progress_percent = min(55 / MONTHLY_GOAL_MINS, 1.0) 
+    progress_percent = min( current_month_total_mins/ MONTHLY_GOAL_MINS, 1.0) 
 
     st.subheader("本月運動目標進度")
     st.progress(progress_percent)
@@ -177,7 +177,7 @@ if st.session_state.page == "運動紀錄":
     with col_p1:
         st.metric("目標分鐘數", f"{MONTHLY_GOAL_MINS} 分鐘")
     with col_p2:
-        st.metric("已完成分鐘數", f"55 分鐘")
+        st.metric("已完成分鐘數", f"{ current_month_total_mins} 分鐘")
     with col_p3:
         st.metric("進度", f"{progress_percent:.0%}")
     st.divider()
@@ -324,5 +324,6 @@ elif st.session_state.page == "活動推廣":
 #elif st.session_state.page == "報名紀錄":
 
 #    st.header("報名紀錄")
+
 
 
