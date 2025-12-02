@@ -1,0 +1,6 @@
+streamlit
+pandas
+python-barcode[pillow]
+Pillow
+pydeck
+streamlit-javascript
