@@ -227,7 +227,7 @@ elif st.session_state.page == "點數兌換":
             f"已折抵 {total_redeemed_points:,} 點"
         )
     with col_m3:
-        st.metric("預估已節省未來醫療支出", 2000元)
+        st.metric("預估已節省未來醫療支出", "2000元")
     
 
     st.success("店家直接掃描下方條碼，系統會自動辨識店家並折抵！")
@@ -341,6 +341,7 @@ elif st.session_state.page == "活動推廣":
 #elif st.session_state.page == "報名紀錄":
 
 #    st.header("報名紀錄")
+
 
 
 
