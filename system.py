@@ -96,8 +96,8 @@ prescription = {
     "開立日期": "2025-12-01",
     "個管師": "王小明個管師",
     "處方內容": [
-        "每週至少3次肌力訓練，每次30分鐘",
-        "每天散步30分鐘",
+        "每月至少2次肌力訓練，每次30分鐘",
+        "每天散步20分鐘",
     ],
     #"提醒": "肌力訓練可獲得雙倍點數喔！加油～"
 }
@@ -160,7 +160,7 @@ if st.session_state.page == "運動紀錄":
     
     # =====本月運動目標進度條 =====
     today = datetime.date.today()
-    MONTHLY_GOAL_MINS = 200 
+    MONTHLY_GOAL_MINS = 650 
     
     # 過濾出本月的運動紀錄
     current_month_records = df[
@@ -324,6 +324,7 @@ elif st.session_state.page == "活動推廣":
 #elif st.session_state.page == "報名紀錄":
 
 #    st.header("報名紀錄")
+
 
 
 
