@@ -1,4 +1,4 @@
-# app.py —— 長輩運動健康平台（左側選單用 4 個超大按鈕版）
+
 import streamlit as st
 import pandas as pd
 import datetime
@@ -89,7 +89,7 @@ if not st.session_state.redeemed:
     ]
 
 def available_points():
-     return st.session_state.total_points - sum(r["點數"] for r in st.session_state.redeemed if r["狀態"] == "已折抵")
+     return st.session_state.total_points - sum(r["點數"] for r in st.session_state.redeemed)
 
 # 運動處方箋
 prescription = {
@@ -295,4 +295,5 @@ elif st.session_state.page == "活動推廣":
             st.markdown("<br>", unsafe_allow_html=True)
 # ────────────────────── 報名紀錄（同樣用縣市區下拉，自動排序最近）──────────────────────
 #elif st.session_state.page == "報名紀錄":
+
 #    st.header("報名紀錄")
