@@ -153,7 +153,34 @@ if st.session_state.page == "運動紀錄":
 
     # ===== 先定義 df =====
     df = pd.DataFrame(st.session_state.records).sort_values("日期", ascending=False)
+    # ===== 先定義 df (並確保日期為 datetime 格式以便篩選) =====
+    df = pd.DataFrame(st.session_state.records)
+    df['日期'] = pd.to_datetime(df['日期'])
+    df_sorted = df.sort_values("日期", ascending=False)
+    
+    # ===== NEW: 本月運動目標進度條 =====
+    today = datetime.date.today()
+    MONTHLY_GOAL_MINS = 1200 # 假設每個月目標運動分鐘數為 1200 分鐘
+    
+    # 過濾出本月的運動紀錄
+    current_month_records = df[
+        (df['日期'].dt.year == today.year) &
+        (df['日期'].dt.month == today.month)
+    ]
+    current_month_total_mins = current_month_records['分鐘數'].sum()
+    progress_percent = min(current_month_total_mins / MONTHLY_GOAL_MINS, 1.0) 
 
+    st.subheader("本月運動目標進度")
+    st.progress(progress_percent)
+    
+    col_p1, col_p2, col_p3 = st.columns(3)
+    with col_p1:
+        st.metric("目標分鐘數", f"{MONTHLY_GOAL_MINS} 分鐘")
+    with col_p2:
+        st.metric("已完成分鐘數", f"{current_month_total_mins} 分鐘")
+    with col_p3:
+        st.metric("進度", f"{progress_percent:.0%}")
+    st.divider()
     # ===== 新增可視化圖表 =====
     # ===== 可視化每種運動累積分鐘數 =====
     df = pd.DataFrame(st.session_state.records)
@@ -297,3 +324,4 @@ elif st.session_state.page == "活動推廣":
 #elif st.session_state.page == "報名紀錄":
 
 #    st.header("報名紀錄")
+
