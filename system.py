@@ -216,7 +216,7 @@ elif st.session_state.page == "點數兌換":
     money_saved_twd = total_redeemed_points // CONVERSION_RATE_POINTS_PER_TWD
     st.header("點數兌換")
     # 更改為兩欄位的 metric 呈現
-    col_m1, col_m2, col_m3 = st.columns(2)
+    col_m1, col_m2, col_m3 = st.columns(3)
 
     with col_m1:
         st.metric("目前可用點數", f"{available_points():,} 點")
@@ -341,6 +341,7 @@ elif st.session_state.page == "活動推廣":
 #elif st.session_state.page == "報名紀錄":
 
 #    st.header("報名紀錄")
+
 
 
 
