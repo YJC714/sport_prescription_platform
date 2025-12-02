@@ -210,6 +210,10 @@ if st.session_state.page == "運動紀錄":
 
 # ────────────────────── 點數兌換 ──────────────────────
 elif st.session_state.page == "點數兌換":
+    # ===== NEW: 節省金額計算 =====
+    total_redeemed_points = sum(r["點數"] for r in st.session_state.redeemed)
+    CONVERSION_RATE_POINTS_PER_TWD = 10 # 假設 10 點 = 1 元
+    money_saved_twd = total_redeemed_points // CONVERSION_RATE_POINTS_PER_TWD
     st.header("點數兌換")
     # 更改為兩欄位的 metric 呈現
     col_m1, col_m2 = st.columns(2)
@@ -335,6 +339,7 @@ elif st.session_state.page == "活動推廣":
 #elif st.session_state.page == "報名紀錄":
 
 #    st.header("報名紀錄")
+
 
 
 
